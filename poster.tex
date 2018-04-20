@@ -11,7 +11,7 @@
 \usepackage{csquotes}
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc}
-\usepackage[orientation=portrait,size=a0,scale=0.93,debug]{beamerposter}
+\usepackage[orientation=portrait,size=custom, height=97,width=97,scale=0.93,debug]{beamerposter}
 \mode<presentation>
   {
   \usetheme{IPFposter}
@@ -38,7 +38,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% length and layout stuff
+%% length and layout fig
 
 \newlength{\columnheight}
 \setlength{\columnheight}{97cm}
@@ -46,7 +46,7 @@
 \setlength\textwidth{\paperwidth}
 
 \newlength{\marginw}
-\setlength{\marginw}{4cm}
+\setlength{\marginw}{2cm}
 
 \newlength{\tw}
 \setlength{\tw}{\textwidth}
@@ -103,17 +103,20 @@ text margin right=0pt,%
 \logoright{\includegraphics[keepaspectratio=true,width=9cm]{fig/logos/dd1_2.pdf}}
 
 %% title
-  \title[Fancy Posters]{{\huge My Poster}}
-  \author[]{\Large fst author\inst{1} \and 2nd author\inst{1}
-    \and 3rd author\inst{2}} \institute[IPFdd UBS]{ \inst{1}Leibniz-Institut f\"ur
+  \title[Fraktal Poster3]{{\huge Random Walk - fraktale Wanderungen und Polymermodelle}}
+  \author[]{\Large Martin Wengenmayr\inst{1,2} \and Ron Dockhorn\inst{1} 
+    \and Jens-Uwe Sommer\inst{1,2}} \institute[IPFdd UBS]{ \inst{1}Leibniz-Institut f\"ur
     Polymerforschung Dresden e. V., Hohe Stra\ss e
-    6, 01069 Dresden, Germany\\
-    \inst{2}other\\
+    6, 01069 Dresden\\
+    \inst{2}TU Dresden, Intitut für Theoretische Physik, 01062 Dresden\\
     ~\vspace{1ex} } \date{}
 
 %% set text in footline
-\footlinetext{\texttt{http://www.ipfdd.de}\hfill\texttt{someone@ipfdd.de}}
+\footlinetext{\texttt{http://www.ipfdd.de}\hfill\texttt{wengenmayr@ipfdd.de, dockhorn@ipfdd.de}}
 
+
+%% replace altert{xx} command :
+ %  "(\ \textcolor{IPFred}{.*?} )"  -->  " $1 "
 
 %%--------------------------------------------------------------------------%%
 %% content
@@ -122,22 +125,50 @@ text margin right=0pt,%
 \begin{myTwoColPoster}
 % ---------------------------------------------------------%
 % first column
+
 \begin{myCol}
-  \begin{textblock}{Introduction}
-    Some text
+  \begin{textblock}{Was sind Zufallswege?}
+    \renewcommand{\baselinestretch}{1.4}
+    \Large
+    \begin{minipage}[c]{0.6\textwidth}
+      Typischer Samstagabend:
+      \begin{itemize} \setlength\itemsep{1.1em} \Large
+        \item ein Betrunkender, nennen wir ihn \textbf{Bob}, kommt aus der Kneipe und läuft ohne Ziel durch seine Stadt
+        \item an jeder Kreuzung läuft er \textbf{geradeaus}, \textbf{kehrt um}, oder biegt nach \textbf {links} oder \textbf{rechts} ab
+      \end{itemize}
+    \end{minipage}
+    \begin{minipage}[c]{0.39\textwidth}
+      \begin{center}
+        \includegraphics[width=0.99\textwidth]{fig/drunkard}
+      \end{center}
+    \end{minipage}
+    \begin{center}
+      \includegraphics[width=0.9\textwidth]{fig/randomWalkPy}
+    \end{center}
+    \begin{minipage}[c]{0.7\textwidth}
+      \includegraphics[width=0.95\textwidth]{fig/randomWalkSelfsimiliar}
+    \end{minipage}
+    \begin{minipage}[c]{0.29\textwidth}
+      Teil eines Random Walk ist wieder ein Random Walk\\
+      \textcolor{IPForange}{$\Rightarrow$ \textbf{Selbstähnlich}}
 
-  \end{textblock}
-
-  \begin{textblock}{Part 1}
-    \begin{itemize}
-      \item text
-      \item text
+    \end{minipage}
+    Das sollte man wissen:
+    \begin{itemize} \setlength\itemsep{1.1em} \Large
+      \item der \textit{Erwartungswert des End-zu-Anfang Abstandes} 
+      \begin{align*}
+        \langle R \rangle=0
+      \end{align*}
+      $\Rightarrow$ man \textbf{kehrt mit hoher Wahrscheinlichkeit zur Kneipe zurück}
+      \item der \textit{Erwartungswert des quaradatischen End-zu-Anfang Abstandes} 
+      \begin{align*}
+        \langle R^2 \rangle \simeq \text{Anzahl Schritte}
+      \end{align*}$\Rightarrow$ viele Schritte $=$ \textbf{immer weitere Wege um den Startpunkt}
     \end{itemize}
   \end{textblock}
+  %%--------------------------------------------------------------------------%%
 
-  \begin{textblock}{Part 3}
-    text
-  \end{textblock}
+  
 
 \end{myCol}
 % ---------------------------------------------------------%
@@ -147,23 +178,66 @@ text margin right=0pt,%
 % ---------------------------------------------------------%
 % second column
 \begin{myCol}
-  \begin{textblock}{Part 4}
-    Text \cite{Einstein1906}
-  \end{textblock}
+  
+%%--------------------------------------------------------------------------%%
+  %%--------------------------------------------------------------------------%%
+  \begin{textblock}{Selbst\"ahnlichkeit und Dimension von Polymeren - Das Blobmodell}
 
+    \begin{minipage}[c]{0.55\textwidth}
+      \begin{itemize} \setlength\itemsep{1.1em} \Large
+        \item Lineares Polymer ist langes, kettenartiges Makromolek\"ul
+        \item Basiseinheit ist das\\
+        \textit{ Monomer} $==$ ein \textit{Schritt}
+        \item \textit{Viele} Monomere in zuf\"alliger Richtung aneinander gekettet\\[1.2em]
+        $\Rightarrow$ \textcolor{IPForange}{Vorstellung von einem Polymer als sehr langer Zufallsweg}
+      \end{itemize}
+    \end{minipage}\hfill
+    \begin{minipage}[c]{0.41\textwidth}
+      \includegraphics[width=0.75\textwidth]{fig/monchain}
+    \end{minipage}
+    \vspace*{1cm}
+    \begin{center}
+      \begin{minipage}[c]{0.2\textwidth}
+        \includegraphics[width=0.94\textwidth]{fig/RW}
+      \end{minipage}\hfill
+      \begin{minipage}[c]{0.75\textwidth}
+        {\Large $\Longrightarrow$ M\"oglicher Zufallsweg eines langen Polymers}\hspace*{1cm}\vspace*{0.5cm}
+        \begin{itemize} \setlength\itemsep{1.1em} \Large
+          \item Aus der Ferne: regeloses Kn\"auel
+          \item Bei wiederholter Vergrößerung: immer ähnliche Struktur\\[1.2em]
+          \textcolor{IPForange}{$\Rightarrow$ \textbf{Selbstähnlich}}
+        \end{itemize}
+      \end{minipage}
+    \end{center}\vspace*{0.8cm}
+    \includegraphics[width=1.05\textwidth]{fig/blob_chain}\vspace*{0.8cm}
+    \centerline{ \textbf{\Large Langes Polymer ist \textcolor{IPFred}{selbst\"ahnlich} und besitzt eine \textcolor{IPFred}{Dimension ${ D\neq1} $}}}\vspace*{0.6em}
+    \begin{center}
+      \begin{minipage}[c]{0.48\textwidth}\Large
+        \textbf{\centerline{Ideales Polymer}}
+        \begin{itemize} \setlength\itemsep{1.1em} \Large
+          \item Modellierung als einfacher Zufallsweg
+          \item Polymer - eigentlich eine eindimensionale Linie - füllt den Raum wie eine Fläche aus
+        \end{itemize}
+        \textcolor{IPFred}{\textbf{ $\Rightarrow$} } gleiche Dimension wie Random Walk
+      \centerline{ \large ${ \boldsymbol{ \rightarrow D_\text{f}=2}}$}
+      \end{minipage}\hfill
+      \begin{minipage}[c]{0.48\textwidth}\Large
+        \textbf{\centerline{Gutes L\"osungsmittel}}
+        \begin{itemize}
+          \item Modellierung als \textit{Selbstvermeidender Zufallsweg}
+          \item Monomere können nicht überlappen\\
+          $\rightarrow$ stoßen sich ab\\
+          $\rightarrow$ im Vergleich zu Random Walk \textit{quillt} das Polymer
+        \end{itemize}
+        \textcolor{IPFred}{\textbf{ $\Rightarrow$} }das Polymer schwillt an bleibt aber selbst\"ahnlich
+      \centerline{ \large ${\boldsymbol{ \rightarrow D\approx1.7}}$}
+      \end{minipage}
+    \end{center}\vspace*{0.8cm}
+    \centering
+      \textcolor{IPForange}{\textbf{\LARGE Ausnutzen der Selbst\"ahnlichkeit und fraktalen Dimension erlaubt viele einfache und fundamentale Vorhersagen \"uber das Verhalten von Polymeren} }
 
-  \begin{textblock}{Conclusions}
-     \begin{itemize}
-       \item 1
-       \item 2
-       \item 3
-     \end{itemize}
    \end{textblock}
-
-
-  \begin{textblock}{Literature}
-    \printbibliography
-  \end{textblock}
+   %%--------------------------------------------------------------------------%%
 
 
 \end{myCol}%
